@@ -1,0 +1,53 @@
+def calculateRoomBill(room_price, nights):
+    
+    return room_price * nights
+
+def calculateSubtotal(room_bill, food_charge, service_charge):
+    
+    return room_bill + food_charge + service_charge
+
+def calculateGST(subtotal):
+    
+    return subtotal * 0.12
+
+def calculateDiscount(subtotal):
+    
+    if subtotal >= 8000:
+        return subtotal * 0.15
+    elif subtotal >= 5000:
+        return subtotal * 0.10
+    else:
+        return subtotal * 0.05
+
+def calculateFinalBill(room_price, nights, food_charge, service_charge):
+    
+    room_bill = calculateRoomBill(room_price, nights)
+    subtotal = calculateSubtotal(room_bill, food_charge, service_charge)
+    discount = calculateDiscount(subtotal)
+    gst = calculateGST(subtotal)
+    
+    
+    discounted_subtotal = subtotal - discount
+    final_amount = discounted_subtotal + gst
+    
+    
+    return final_amount
+
+
+room_price = 2500
+nights = 3
+food_charge = 1500
+service_charge = 500
+
+room_bill = calculateRoomBill(room_price, nights)
+subtotal = calculateSubtotal(room_bill, food_charge, service_charge)
+discount = calculateDiscount(subtotal)
+gst = calculateGST(subtotal)
+final_amount = calculateFinalBill(room_price, nights, food_charge, service_charge)
+
+
+print(f"Room Bill = Rs. {room_bill}")
+print(f"Subtotal = Rs. {subtotal}")
+print(f"Discount = Rs. {discount}")
+print(f"GST = Rs. {gst}")
+print(f"Final Payable Amount = Rs. {final_amount}")
